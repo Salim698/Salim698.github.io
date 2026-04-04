@@ -402,4 +402,13 @@ var obs = new IntersectionObserver(function(entries) {
 function observeAll() {
   var els = document.querySelectorAll(".reveal");
   for (var i = 0; i < els.length; i++) {
-    var r = els[i].getBoundingClientRect()
+    var r = els[i].getBoundingClientRect();
+    if (r.top < window.innerHeight) els[i].classList.add("visible");
+    else obs.observe(els[i]);
+  }
+}
+window.addEventListener("load", observeAll);
+observeAll();
+</script>
+</body>
+</html>
