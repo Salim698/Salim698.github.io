@@ -496,6 +496,7 @@ section { position: relative; z-index: 1; }
   border-radius: 100px;
 }
 .exp-type-stage      { background: rgba(14,165,233,.15);  color: var(--cyan);  border: 1px solid rgba(14,165,233,.3); }
+.exp-type-preembauche{ background: rgba(34,211,160,.15);  color: var(--green); border: 1px solid rgba(34,211,160,.3); }
 .exp-type-entrepreneur{ background: rgba(251,146,60,.12); color: var(--orange);border: 1px solid rgba(251,146,60,.3); }
 .exp-period {
   font-family: var(--mono);
