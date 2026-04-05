@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT_TITLE — Nombré Alidou Salim</title>
+  <link rel="icon" type="image/svg+xml" href="../../data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0e1a'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%233b82f6'%3ENS%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    /* ── PAGE PROJET SPÉCIFIQUE ── */
+    .proj-hero {
+      position: relative; z-index: 1;
+      padding: 120px 56px 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .proj-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 1px; color: var(--muted);
+      margin-bottom: 36px; transition: color .2s;
+    }
+    .proj-back:hover { color: var(--blue); }
+    .proj-back::before { content: '←'; }
+    .proj-eyebrow {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 16px;
+    }
+    .proj-title {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 800; letter-spacing: -2px;
+      line-height: 1.05; color: var(--text);
+      margin-bottom: 24px; max-width: 800px;
+    }
+    .proj-meta {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px; align-items: center;
+    }
+    .proj-cat {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+    }
+    .proj-status {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--teal); letter-spacing: 1px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .proj-status::before {
+      content: ''; display: block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+    }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .proj-tag {
+      font-family: var(--mono); font-size: 10px;
+      padding: 4px 10px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 3px;
+    }
+    .proj-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      background: var(--blue); color: #fff;
+      font-size: 13px; font-weight: 600;
+      border-radius: var(--r);
+      transition: background .2s, transform .2s;
+      margin-top: 40px;
+    }
+    .proj-cta:hover { background: #2563eb; transform: translateY(-1px); }
+
+    /* ── BODY LAYOUT ── */
+    .proj-body {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 56px;
+    }
+    .proj-main { padding-right: 64px; border-right: 1px solid var(--border); }
+    .proj-sidebar { padding-left: 48px; }
+
+    /* ── SECTIONS MAIN ── */
+    .proj-section { margin-bottom: 56px; }
+    .proj-section-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .proj-section p {
+      font-size: 14px; color: var(--text2);
+      line-height: 1.85; font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .proj-section p:last-child { margin-bottom: 0; }
+
+    /* ── FLOW STEPS ── */
+    .flow-steps { display: flex; flex-direction: column; gap: 0; }
+    .flow-step {
+      display: flex; gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--blue); font-weight: 600;
+      flex-shrink: 0; width: 24px; padding-top: 2px;
+    }
+    .flow-name {
+      font-size: 13px; font-weight: 600;
+      color: var(--text); margin-bottom: 3px;
+    }
+    .flow-desc {
+      font-size: 12px; color: var(--muted);
+      line-height: 1.6; font-weight: 300;
+    }
+
+    /* ── RESULTS ── */
+    .results-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .results-list li {
+      font-size: 13px; color: var(--text2);
+      padding: 12px 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding-left: 40px; position: relative;
+      line-height: 1.6;
+    }
+    .results-list li::before {
+      content: '✓'; position: absolute; left: 14px;
+      color: var(--teal); font-weight: 700; font-size: 13px;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots { display: flex; flex-direction: column; gap: 16px; }
+    .screenshot-item {
+      border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      transition: border-color .2s;
+    }
+    .screenshot-item:hover { border-color: var(--border2); }
+    .screenshot-item img {
+      width: 100%; display: block;
+      cursor: zoom-in;
+    }
+    .screenshot-caption {
+      padding: 10px 14px;
+      font-family: var(--mono); font-size: 10px;
+      color: var(--muted); letter-spacing: .5px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card-title {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 18px;
+    }
+    .sidebar-row {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .sidebar-row:last-child { border-bottom: none; }
+    .sidebar-key { color: var(--muted); flex-shrink: 0; font-weight: 400; }
+    .sidebar-val { color: var(--text2); font-weight: 500; text-align: right; }
+    .sidebar-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .sidebar-pill {
+      font-family: var(--mono); font-size: 9px;
+      padding: 3px 9px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 3px;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.9); z-index: 500;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: var(--r); }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px;
+      font-size: 28px; color: var(--muted); cursor: pointer;
+      font-weight: 300; transition: color .2s;
+    }
+    .lightbox-close:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .proj-hero { padding: 100px 24px 48px; }
+      .proj-body { grid-template-columns: 1fr; padding: 40px 24px; }
+      .proj-main { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 48px; margin-bottom: 48px; }
+      .proj-sidebar { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span>~/</span>salim</div>
+  <ul class="nav-links">
+    <li><a href="../../index.html#projects">Projets</a></li>
+    <li><a href="../../index.html#certifications">Certifications</a></li>
+    <li><a href="../../index.html#experience">Expérience</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../../index.html#projects"       class="mobile-link">Projets</a>
+  <a href="../../index.html#certifications" class="mobile-link">Certifications</a>
+  <a href="../../index.html#experience"     class="mobile-link">Expérience</a>
+  <a href="../../index.html#contact"        class="mobile-link">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<div class="proj-hero">
+  <a href="../../index.html#projects" class="proj-back">Retour aux projets</a>
+  <div class="proj-eyebrow">Automatisation n8n</div><!-- MODIFIER : catégorie -->
+  <h1 class="proj-title">SOC IP Analyzer<br>Threat Intelligence</h1><!-- MODIFIER : titre -->
+  <div class="proj-meta">
+    <span class="proj-cat cat-automatisation">Automatisation</span><!-- MODIFIER : cat -->
+    <span class="proj-status">Actif</span>
+  </div>
+  <div class="proj-tags" id="proj-tags"></div>
+  <a href="https://mail.google.com/mail/?view=cm&to=salimnombre4@gmail.com&su=Demande demo - SOC IP Analyzer"
+     target="_blank" class="proj-cta">Demander une démo</a><!-- SUPPRIMER si pas n8n -->
+</div>
+
+<!-- ── BODY ── -->
+<div class="proj-body">
+
+  <!-- MAIN -->
+  <div class="proj-main">
+
+    <div class="proj-section reveal">
+      <div class="proj-section-title">Vue d'ensemble</div>
+      <p>
+        <!-- MODIFIER : description longue du projet -->
+        Ce workflow analyse automatiquement n'importe quelle adresse IP suspecte en temps réel.
+        Il interroge 3 sources de threat intelligence en parallèle, calcule un score de risque combiné
+        et envoie une alerte complète par Telegram et Email en moins de 3 secondes.
+      </p>
+      <p>
+        Développé pour répondre au besoin d'analyse rapide d'IPs dans un contexte SOC,
+        sans abonnement coûteux. Toutes les APIs utilisées sont gratuites.
+      </p>
+    </div>
+
+    <div class="proj-section reveal">
+      <div class="proj-section-title">Flux d'exécution</div>
+      <div class="flow-steps" id="flow-steps"></div>
+    </div>
+
+    <div class="proj-section reveal">
+      <div class="proj-section-title">Résultats</div>
+      <ul class="results-list" id="results-list"></ul>
+    </div>
+
+    <div class="proj-section reveal">
+      <div class="proj-section-title">Captures d'écran</div>
+      <div class="screenshots" id="screenshots"></div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- SIDEBAR -->
+  <div class="proj-sidebar">
+
+    <div class="sidebar-card reveal">
+      <div class="sidebar-card-title">Détails</div>
+      <div id="sidebar-details"></div>
+    </div>
+
+    <div class="sidebar-card reveal">
+      <div class="sidebar-card-title">Stack technique</div>
+      <div class="sidebar-stack" id="sidebar-stack"></div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /proj-body -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lbClose">&times;</span>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- ═══════════════════════════════════════
+     DONNÉES DU PROJET — MODIFIER ICI
+════════════════════════════════════════ -->
+<script>
+var PROJECT = {
+
+  tags: ["n8n", "IPQualityScore", "AlienVault OTX", "ip-api", "Google Sheets", "Docker"],
+  /* MODIFIER : liste des tags */
+
+  flow: [
+    /* MODIFIER : étapes du workflow */
+    { num: "01", name: "Webhook / Schedule Trigger",      desc: "Déclenché par appel HTTP POST ou automatiquement chaque jour à 2h. Accepte l'IP en paramètre." },
+    { num: "02", name: "Parse & Validate Input",          desc: "Valide le format de l'IP, extrait les paramètres source et user." },
+    { num: "03", name: "3 APIs en parallèle",             desc: "IPQualityScore (fraude/VPN/Bot), AlienVault OTX (campagnes malware), ip-api (géolocalisation/ISP/ASN)." },
+    { num: "04", name: "SOC Engine — Calcul du score",    desc: "Fusionne les 3 résultats, calcule un score combiné pondéré et détermine le niveau de risque : LOW / MEDIUM / HIGH / CRITICAL." },
+    { num: "05", name: "Telegram Alert",                  desc: "Envoie un message formaté avec tous les détails : IP, flags, scores, localisation." },
+    { num: "06", name: "Email HTML + Google Sheets",      desc: "Email pro avec tableau de bord complet. Log automatique dans Google Sheets pour traçabilité." }
+  ],
+
+  results: [
+    /* MODIFIER : résultats obtenus */
+    "Score de risque combiné : LOW / MEDIUM / HIGH / CRITICAL en 2-3 secondes",
+    "Détection : VPN, TOR, BOT, Proxy, campagnes malware connues (AlienVault)",
+    "Alerte Telegram formatée avec tous les indicateurs de compromission",
+    "Email HTML professionnel avec tableau complet",
+    "Log automatique dans Google Sheets — historique complet des analyses",
+    "Zéro coût — toutes les APIs sont gratuites"
+  ],
+
+  screenshots: [
+    /* MODIFIER : ajouter vos images
+       Mettre les fichiers image dans le dossier /img/
+       Format : { src: "img/nom-du-fichier.png", caption: "Description" } */
+    { src: "img/workflow.png",  caption: "Interface n8n — Vue du workflow complet" },
+    { src: "img/telegram.png",  caption: "Alerte Telegram reçue — IP CRITICAL détectée" },
+    { src: "img/email.png",     caption: "Email HTML professionnel généré automatiquement" },
+    { src: "img/sheets.png",    caption: "Log automatique dans Google Sheets" }
+  ],
+
+  details: [
+    /* MODIFIER : métadonnées du projet */
+    { key: "Statut",       val: "Actif en production" },
+    { key: "Plateforme",   val: "n8n self-hosted (Docker)" },
+    { key: "Déclencheur",  val: "Webhook POST + Schedule 2h" },
+    { key: "Temps moyen",  val: "2-3 secondes" },
+    { key: "APIs",         val: "IPQualityScore, AlienVault OTX, ip-api" },
+    { key: "Outputs",      val: "Telegram, Email, Google Sheets" }
+  ]
+
+};
+
+/* ── RENDU ── */
+var tags = PROJECT.tags;
+var tagsEl = document.getElementById("proj-tags");
+for (var i = 0; i < tags.length; i++) {
+  var span = document.createElement("span");
+  span.className = "proj-tag";
+  span.textContent = tags[i];
+  tagsEl.appendChild(span);
+}
+
+var flowEl = document.getElementById("flow-steps");
+for (var i = 0; i < PROJECT.flow.length; i++) {
+  var f = PROJECT.flow[i];
+  var div = document.createElement("div");
+  div.className = "flow-step";
+  div.innerHTML = "<div class='flow-num'>" + f.num + "</div><div><div class='flow-name'>" + f.name + "</div><div class='flow-desc'>" + f.desc + "</div></div>";
+  flowEl.appendChild(div);
+}
+
+var resEl = document.getElementById("results-list");
+for (var i = 0; i < PROJECT.results.length; i++) {
+  var li = document.createElement("li");
+  li.textContent = PROJECT.results[i];
+  resEl.appendChild(li);
+}
+
+var ssEl = document.getElementById("screenshots");
+for (var i = 0; i < PROJECT.screenshots.length; i++) {
+  var s = PROJECT.screenshots[i];
+  var div = document.createElement("div");
+  div.className = "screenshot-item";
+  div.innerHTML = "<img src='" + s.src + "' alt='" + s.caption + "' onclick='openLb(this)'><div class='screenshot-caption'>" + s.caption + "</div>";
+  ssEl.appendChild(div);
+}
+
+var detEl = document.getElementById("sidebar-details");
+for (var i = 0; i < PROJECT.details.length; i++) {
+  var d = PROJECT.details[i];
+  var row = document.createElement("div");
+  row.className = "sidebar-row";
+  row.innerHTML = "<span class='sidebar-key'>" + d.key + "</span><span class='sidebar-val'>" + d.val + "</span>";
+  detEl.appendChild(row);
+}
+
+var stEl = document.getElementById("sidebar-stack");
+for (var i = 0; i < PROJECT.tags.length; i++) {
+  var pill = document.createElement("span");
+  pill.className = "sidebar-pill";
+  pill.textContent = PROJECT.tags[i];
+  stEl.appendChild(pill);
+}
+
+/* lightbox */
+function openLb(img) {
+  document.getElementById("lbImg").src = img.src;
+  document.getElementById("lightbox").classList.add("active");
+}
+document.getElementById("lbClose").addEventListener("click", function() {
+  document.getElementById("lightbox").classList.remove("active");
+});
+document.getElementById("lightbox").addEventListener("click", function(e) {
+  if (e.target === this) this.classList.remove("active");
+});
+
+/* hamburger */
+var hamburger  = document.getElementById("hamburger");
+var mobileMenu = document.getElementById("mobileMenu");
+hamburger.addEventListener("click", function() {
+  var open = hamburger.classList.toggle("open");
+  if (open) { mobileMenu.classList.add("open"); document.body.style.overflow = "hidden"; }
+  else { mobileMenu.classList.remove("open"); document.body.style.overflow = ""; }
+});
+var ml = document.querySelectorAll(".mobile-link");
+for (var i = 0; i < ml.length; i++) {
+  ml[i].addEventListener("click", function() {
+    hamburger.classList.remove("open");
+    mobileMenu.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+}
+
+/* reveal */
+var obs = new IntersectionObserver(function(entries) {
+  for (var i = 0; i < entries.length; i++) {
+    if (entries[i].isIntersecting) {
+      entries[i].target.classList.add("visible");
+      obs.unobserve(entries[i].target);
+    }
+  }
+}, { threshold: 0.05 });
+var revEls = document.querySelectorAll(".reveal");
+for (var i = 0; i < revEls.length; i++) obs.observe(revEls[i]);
+</script>
+</body>
+</html>
