@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
+ 
 /* ── VARIABLES ─────────────────────────────── */
 :root {
   --bg:        #f8fafc;
@@ -9,7 +9,7 @@
   --surface3:  #eef2f7;
   --border:    #e2e8f0;
   --border2:   #cbd5e1;
-
+ 
   --blue:      #2563eb;
   --blue-dim:  rgba(37,99,235,0.08);
   --blue-glow: rgba(37,99,235,0.15);
@@ -18,20 +18,20 @@
   --amber:     #d97706;
   --rose:      #e11d48;
   --slate:     #475569;
-
+ 
   --text:      #0f172a;
   --text2:     #334155;
   --muted:     #94a3b8;
-
+ 
   --mono:      'JetBrains Mono', monospace;
   --sans:      'Sora', sans-serif;
   --r:         8px;
-
+ 
   --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
   --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.05);
   --shadow-lg: 0 12px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.06);
 }
-
+ 
 /* ── RESET ──────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -45,7 +45,7 @@ body {
 a { color:inherit; text-decoration:none; }
 img { display:block; max-width:100%; }
 button { font-family:var(--sans); border:none; background:none; cursor:pointer; }
-
+ 
 /* ── SUBTLE BACKGROUND ──────────────────────── */
 body::before {
   content:'';
@@ -55,7 +55,7 @@ body::before {
     radial-gradient(ellipse 50% 40% at 10% 90%, rgba(13,148,136,0.03) 0%, transparent 65%);
   pointer-events:none; z-index:0;
 }
-
+ 
 /* ── NAV ────────────────────────────────────── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
@@ -79,7 +79,7 @@ nav {
   transition:color .2s;
 }
 .nav-links a:hover { color:var(--blue); }
-
+ 
 .hamburger { display:none; flex-direction:column; gap:5px; padding:4px; }
 .hamburger span {
   display:block; width:20px; height:1.5px;
@@ -88,7 +88,7 @@ nav {
 .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-
+ 
 .mobile-menu {
   position:fixed; inset:0;
   background:rgba(248,250,252,.97);
@@ -103,7 +103,7 @@ nav {
   color:var(--slate); transition:color .2s;
 }
 .mobile-menu a:hover { color:var(--blue); }
-
+ 
 /* ── HERO ───────────────────────────────────── */
 #hero {
   position:relative; z-index:1;
@@ -151,7 +151,7 @@ nav {
   color:var(--muted); margin-top:5px;
 }
 .hero-links { display:flex; gap:14px; flex-wrap:wrap; }
-
+ 
 /* ── BUTTONS ────────────────────────────────── */
 .btn-primary {
   display:inline-flex; align-items:center; gap:8px;
@@ -178,7 +178,7 @@ nav {
   border-color:var(--blue); color:var(--blue);
   background:var(--blue-dim); transform:translateY(-1px);
 }
-
+ 
 /* ── SECTIONS ───────────────────────────────── */
 section { position:relative; z-index:1; }
 .section-inner { max-width:1200px; margin:0 auto; }
@@ -192,7 +192,7 @@ section { position:relative; z-index:1; }
   font-weight:800; letter-spacing:-1px; margin-bottom:48px;
   color:var(--text);
 }
-
+ 
 /* ── PROJECTS ───────────────────────────────── */
 #projects {
   padding:100px 56px;
@@ -240,7 +240,7 @@ section { position:relative; z-index:1; }
   box-shadow:var(--shadow-lg);
 }
 .project-card:hover::after { transform:scaleX(1); }
-
+ 
 .project-cat {
   font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
   padding:4px 10px; border-radius:100px;
@@ -261,7 +261,7 @@ section { position:relative; z-index:1; }
   background:rgba(217,119,6,.08); color:var(--amber);
   border:1px solid rgba(217,119,6,.2); --card-accent:var(--amber);
 }
-
+ 
 .project-title { font-size:16px; font-weight:700; color:var(--text); line-height:1.3; }
 .project-desc  { font-size:13px; color:var(--text2); line-height:1.75; flex:1; font-weight:300; }
 .project-tags  { display:flex; flex-wrap:wrap; gap:6px; }
@@ -285,7 +285,7 @@ section { position:relative; z-index:1; }
   border:1.5px solid var(--blue); color:var(--blue); background:var(--blue-dim);
 }
 .btn-card-contact:hover { background:var(--blue); color:#fff; }
-
+ 
 /* ── CERTIFICATIONS ─────────────────────────── */
 #certifications {
   padding:100px 56px;
@@ -319,7 +319,7 @@ section { position:relative; z-index:1; }
 .badge-other   { background:rgba(148,163,184,.10);color:var(--slate);  border:1px solid rgba(148,163,184,.2); }
 .cert-title    { font-size:13px; font-weight:600; color:var(--text); line-height:1.4; margin-bottom:3px; }
 .cert-issuer   { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.5px; }
-
+ 
 /* ── EXPERIENCE ─────────────────────────────── */
 #experience { padding:100px 56px; border-top:1px solid var(--border); }
 .exp-list { display:flex; flex-direction:column; gap:16px; }
@@ -357,7 +357,7 @@ section { position:relative; z-index:1; }
   background:var(--surface3); border:1px solid var(--border);
   color:var(--slate); border-radius:3px;
 }
-
+ 
 /* ── CONTACT ────────────────────────────────── */
 #contact {
   padding:100px 56px;
@@ -376,7 +376,7 @@ section { position:relative; z-index:1; }
   margin-bottom:44px; font-weight:300; max-width:480px;
 }
 .contact-actions { display:flex; gap:14px; flex-wrap:wrap; }
-
+ 
 /* ── FOOTER ─────────────────────────────────── */
 footer {
   padding:22px 56px;
@@ -388,20 +388,20 @@ footer {
 }
 footer a { color:var(--muted); transition:color .2s; }
 footer a:hover { color:var(--blue); }
-
+ 
 /* ── REVEAL ─────────────────────────────────── */
 .reveal { opacity:0; transform:translateY(18px); transition:opacity .5s, transform .5s; }
 .reveal.visible { opacity:1; transform:none; }
-
+ 
 /* ── SCROLLBAR ──────────────────────────────── */
 ::-webkit-scrollbar { width:6px; }
 ::-webkit-scrollbar-track { background:var(--bg2); }
 ::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
 ::-webkit-scrollbar-thumb:hover { background:var(--blue); }
-
+ 
 /* ── SELECTION ──────────────────────────────── */
 ::selection { background:rgba(37,99,235,0.15); color:var(--blue); }
-
+ 
 /* ── RESPONSIVE ─────────────────────────────── */
 @media (max-width:900px) {
   nav { padding:0 24px; }
