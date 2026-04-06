@@ -453,28 +453,20 @@ nav {
   transform: translateY(-1px) scale(1);
 }
 
-/* LinkedIn - Couleur officielle visible */
-a.btn-primary[href*="linkedin"] {
-  background: linear-gradient(135deg, #0A66C2 0%, #0a8cff 100%);
+/* LinkedIn - Couleur officielle visible (hero + contact) */
+a.btn-primary[href*="linkedin"],
+.contact-actions a.btn-primary[href*="linkedin"],
+.hero-links a.btn-primary[href*="linkedin"] {
+  background: linear-gradient(135deg, #0A66C2 0%, #0a8cff 100%) !important;
   color: #fff !important;
+  box-shadow: 0 0 20px rgba(10, 102, 194, 0.25) !important;
 }
 
-a.btn-primary[href*="linkedin"]:hover {
-  box-shadow: 0 0 40px rgba(10, 102, 194, 0.4), 0 12px 32px rgba(10, 102, 194, 0.3);
-}
-
-/* Gmail / Email - Couleur rouge Gmail */
-a.btn-primary[href*="gmail"],
-a.btn-primary[href*="mail"],
-a.btn-primary[href^="mailto"] {
-  background: linear-gradient(135deg, #EA4335 0%, #ff6b5b 100%);
-  color: #fff !important;
-}
-
-a.btn-primary[href*="gmail"]:hover,
-a.btn-primary[href*="mail"]:hover,
-a.btn-primary[href^="mailto"]:hover {
-  box-shadow: 0 0 40px rgba(234, 67, 53, 0.4), 0 12px 32px rgba(234, 67, 53, 0.3);
+a.btn-primary[href*="linkedin"]:hover,
+.contact-actions a.btn-primary[href*="linkedin"]:hover,
+.hero-links a.btn-primary[href*="linkedin"]:hover {
+  box-shadow: 0 0 40px rgba(10, 102, 194, 0.5), 0 12px 32px rgba(10, 102, 194, 0.35) !important;
+  transform: translateY(-3px) scale(1.02);
 }
 
 .btn-outline {
@@ -584,18 +576,70 @@ section {
   display: inline-block;
   padding-bottom: 16px;
   animation: float 3s ease-in-out infinite, titleGlow 3s ease-in-out infinite;
-  text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(0, 217, 255, 0.15);
+  text-shadow:
+    0 0 10px rgba(0, 217, 255, 0.9),
+    0 0 25px rgba(0, 217, 255, 0.6),
+    0 0 50px rgba(0, 217, 255, 0.35),
+    0 0 80px rgba(0, 217, 255, 0.15);
 }
 
 @keyframes titleGlow {
   0%, 100% {
-    text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(0, 217, 255, 0.15);
+    text-shadow:
+      0 0 10px rgba(0, 217, 255, 0.9),
+      0 0 25px rgba(0, 217, 255, 0.6),
+      0 0 50px rgba(0, 217, 255, 0.35),
+      0 0 80px rgba(0, 217, 255, 0.15);
     color: var(--text-primary);
   }
   50% {
-    text-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(0, 217, 255, 0.25);
-    color: #e4e6eb;
+    text-shadow:
+      0 0 15px rgba(0, 217, 255, 1),
+      0 0 35px rgba(0, 217, 255, 0.8),
+      0 0 70px rgba(0, 217, 255, 0.5),
+      0 0 120px rgba(0, 217, 255, 0.25),
+      0 0 160px rgba(0, 217, 255, 0.1);
+    color: #ffffff;
   }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CURSEUR PERSONNALISÉ
+   ══════════════════════════════════════════════════════════ */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s;
+  box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(0, 217, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s;
+}
+
+.cursor-ring.hovering {
+  width: 52px; height: 52px;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+}
+
+.cursor-dot.clicking {
+  transform: translate(-50%, -50%) scale(0.4);
+  background: #fff;
 }
 
 .section-title::after {
