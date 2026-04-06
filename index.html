@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 <nav>
   <div class="nav-logo"><span>~/</span>salim</div>
   <ul class="nav-links">
@@ -446,25 +444,7 @@ function observeAll() {
 }
 window.addEventListener("load", observeAll);
 observeAll();
-  const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
 
-document.addEventListener('mousemove', e => {
-  dot.style.left = e.clientX + 'px';
-  dot.style.top = e.clientY + 'px';
-  setTimeout(() => {
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-  }, 80);
-});
-
-document.querySelectorAll('a, button, .filter-btn, .project-card').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-});
-
-document.addEventListener('mousedown', () => dot.classList.add('clicking'));
-document.addEventListener('mouseup', () => dot.classList.remove('clicking'));
 </script>
   
 </body>
