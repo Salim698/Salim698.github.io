@@ -397,6 +397,17 @@ nav {
   }
 }
 
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(0, 217, 255, 0.15);
+    color: var(--text-primary);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(0, 217, 255, 0.25);
+    color: #e4e6eb;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════
    BUTTONS - SUPER STYLISÉS
    ══════════════════════════════════════════════════════════ */
@@ -453,13 +464,17 @@ nav {
   transform: translateY(-1px) scale(1);
 }
 
-/* LinkedIn - Couleur officielle visible */
-a.btn-primary[href*="linkedin"] {
+/* LinkedIn + Gmail + Mail - Couleur officielle visible */
+a.btn-primary[href*="linkedin"],
+a.btn-primary[href*="gmail"],
+a.btn-primary[href*="mail"] {
   background: linear-gradient(135deg, #0A66C2 0%, #0a8cff 100%);
   color: #fff !important;
 }
 
-a.btn-primary[href*="linkedin"]:hover {
+a.btn-primary[href*="linkedin"]:hover,
+a.btn-primary[href*="gmail"]:hover,
+a.btn-primary[href*="mail"]:hover {
   box-shadow: 0 0 40px rgba(10, 102, 194, 0.4), 0 12px 32px rgba(10, 102, 194, 0.3);
 }
 
@@ -569,6 +584,8 @@ section {
   position: relative;
   display: inline-block;
   padding-bottom: 16px;
+  animation: float 3s ease-in-out infinite, titleGlow 3s ease-in-out infinite;
+  text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(0, 217, 255, 0.15);
 }
 
 .section-title::after {
